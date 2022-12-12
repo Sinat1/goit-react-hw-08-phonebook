@@ -4,7 +4,7 @@ import { Suspense } from 'react';
 
 export const SharedLayout = () => {
   return (
-    <div style={{ maxWidth: 960, margin: '0 auto', padding: '0 16px' }}>
+    <div style={{ maxWidth: 1600, margin: '0 auto', padding: '0 16px' }}>
       <AppBar />
       <Suspense fallback={null}>
         <Outlet />

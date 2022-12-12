@@ -17,7 +17,7 @@ const ContactList = () => {
       {visibleContacts.map(contact => {
         return (
           <li className={css.contactList__item} key={contact.id}>
-            {contact.name}: {contact.phone}
+            {contact.name}: {contact.number}
             <button
               className={css.contactList__btn}
               type="button"
@@ -33,13 +33,3 @@ const ContactList = () => {
 };
 
 export default ContactList;
-
-// const selector = useSelector(selectContacts);
-// const contact = useSelector(selectFilter);
-
-// const getVisibleContacts = () => {
-//   const normalizedFilter = contact.toLowerCase();
-//   return selector.filter(contact =>
-//     contact.name.toLowerCase().includes(normalizedFilter)
-//   );
-// };
