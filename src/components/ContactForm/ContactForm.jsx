@@ -20,7 +20,7 @@ const ContactForm = () => {
     if (NewName) {
       return alert(`${NewName.name} is already in contacts`);
     } else if (NewNumber) {
-      return alert(`${NewNumber.phone} is already in contacts`);
+      return alert(`${NewNumber.number} is already in contacts`);
     } else {
       return dispatch(addContact({ name, number }));
     }

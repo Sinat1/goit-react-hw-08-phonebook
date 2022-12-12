@@ -35,7 +35,7 @@ const contactsSlice = createSlice({
         state.items.push({
           id: action.payload.id,
           name: action.payload.name,
-          phone: action.payload.phone,
+          number: action.payload.number,
         });
       })
       .addCase(deleteContact.fulfilled, (state, action) => {
