@@ -8,7 +8,7 @@ export const Loader = () => {
         display: `flex`,
         justifyContent: `center`,
         alignItems: `center`,
-        marginTop: `50vh`,
+        marginTop: `30vh`,
         marginLeft: `auto`,
         marginRight: `auto`,
       }}

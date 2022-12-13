@@ -1,7 +1,10 @@
 import { api } from '../../api/api';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { setAuthHeader, clearAuthHeader } from 'api/api';
-
+import {
+  ifAccountIsMissingNotification,
+  ifErrorNotification,
+} from 'notifications/notifications';
 /*
  * POST @ /users/signup
  * body: { name, email, password }
@@ -15,7 +18,7 @@ export const register = createAsyncThunk(
       setAuthHeader(res.data.token);
       return res.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(ifErrorNotification());
     }
   }
 );
@@ -33,7 +36,7 @@ export const logIn = createAsyncThunk(
       setAuthHeader(res.data.token);
       return res.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(ifAccountIsMissingNotification());
     }
   }
 );
@@ -48,7 +51,7 @@ export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
     // After a successful logout, remove the token from the HTTP header
     clearAuthHeader();
   } catch (error) {
-    return thunkAPI.rejectWithValue(error.message);
+    return thunkAPI.rejectWithValue(ifErrorNotification());
   }
 });
 

@@ -1,5 +1,10 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { api } from '../../api/api';
+import {
+  ifAddingContactSuccessfulNotification,
+  ifDeletingContactNotification,
+  ifErrorNotification,
+} from 'notifications/notifications';
 
 export const fetchContacts = createAsyncThunk(
   'contacts/fetchAll',
@@ -8,7 +13,7 @@ export const fetchContacts = createAsyncThunk(
       const { data } = await api.get('/contacts');
       return data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(ifErrorNotification());
     }
   }
 );
@@ -18,9 +23,10 @@ export const addContact = createAsyncThunk(
   async ({ name, number }, thunkAPI) => {
     try {
       const { data } = await api.post('/contacts', { name, number });
+      ifAddingContactSuccessfulNotification();
       return data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(ifErrorNotification());
     }
   }
 );
@@ -30,9 +36,10 @@ export const deleteContact = createAsyncThunk(
   async (contactId, thunkAPI) => {
     try {
       const { data } = await api.delete(`/contacts/${contactId}`);
+      ifDeletingContactNotification();
       return data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(ifErrorNotification());
     }
   }
 );
