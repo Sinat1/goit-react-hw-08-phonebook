@@ -1,7 +1,7 @@
-import css from './Filter.module.css';
 import { selectFilter } from 'redux/contacts/selectors';
 import { changeFilter } from 'redux/contacts/filterSlice';
 import { useSelector, useDispatch } from 'react-redux';
+import { TextField } from '@mui/material';
 
 const Filter = () => {
   const filter = useSelector(selectFilter);
@@ -13,15 +13,18 @@ const Filter = () => {
   };
 
   return (
-    <label className={css.filterLabel}>
-      Find contacts by name
-      <input
-        className={css.filterInput}
-        type="text"
-        value={filter.value}
-        onChange={filterChangeHandler}
-      />
-    </label>
+    <TextField
+      label="Find contacts by name"
+      variant="outlined"
+      type="text"
+      value={filter.value}
+      onChange={filterChangeHandler}
+      sx={{
+        marginTop: `15px`,
+        width: `400px`,
+        paddingBottom: `20px`,
+      }}
+    ></TextField>
   );
 };
 

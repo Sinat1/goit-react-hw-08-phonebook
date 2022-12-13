@@ -1,22 +1,22 @@
 import { Blocks } from 'react-loader-spinner';
 import Box from '@mui/material/Box';
 
-export const Loader = () => {
+export const SmallLoader = () => {
   return (
     <Box
       sx={{
         display: `flex`,
         justifyContent: `center`,
         alignItems: `center`,
-        marginTop: `50vh`,
+        marginBottom: `100vh`,
         marginLeft: `auto`,
         marginRight: `auto`,
       }}
     >
       <Blocks
         visible={true}
-        height="300"
-        width="300"
+        height="150"
+        width="150"
         ariaLabel="blocks-loading"
         wrapperStyle={{}}
         wrapperClass="blocks-wrapper"

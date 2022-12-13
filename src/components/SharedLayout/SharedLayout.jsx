@@ -1,14 +1,24 @@
 import { Outlet } from 'react-router-dom';
-import { AppBar } from '../AppBar/AppBar';
+import { ResponsiveAppBar } from '../AppBar/AppBar';
 import { Suspense } from 'react';
+import Box from '@mui/material/Box';
 
 export const SharedLayout = () => {
   return (
-    <div style={{ maxWidth: 1600, margin: '0 auto', padding: '0 16px' }}>
-      <AppBar />
-      <Suspense fallback={null}>
-        <Outlet />
-      </Suspense>
-    </div>
+    <>
+      <ResponsiveAppBar />
+      <Box
+        sx={{
+          maxWidth: `1700px`,
+          height: `110vh`,
+          margin: `0 auto`,
+          backgroundColor: `aliceblue`,
+        }}
+      >
+        <Suspense fallback={null}>
+          <Outlet />
+        </Suspense>
+      </Box>
+    </>
   );
 };

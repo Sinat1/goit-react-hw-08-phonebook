@@ -1,7 +1,8 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { deleteContact } from 'redux/contacts/operations';
 import { selectVisibleContacts } from 'redux/contacts/selectors';
-import css from './ContactList.module.css';
+import { IconButton } from '@mui/material';
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
 const ContactList = () => {
   const dispatch = useDispatch();
@@ -13,18 +14,39 @@ const ContactList = () => {
   };
 
   return (
-    <ul className={css.contactList}>
+    <ul style={{ width: `400px`, paddingLeft: `0`, paddingBottom: `20px` }}>
       {visibleContacts.map(contact => {
         return (
-          <li className={css.contactList__item} key={contact.id}>
+          <li
+            style={{
+              display: 'flex',
+              justifyContent: `space-between`,
+              alignItems: `center`,
+              borderBottom: `1px solid gray`,
+              borderRadius: `1px`,
+            }}
+            key={contact.id}
+          >
             {contact.name}: {contact.number}
-            <button
-              className={css.contactList__btn}
+            <IconButton
+              size="large"
+              sx={{
+                '&:hover': {
+                  backgroundColor: `white`,
+                },
+              }}
               type="button"
               onClick={() => removeContact(contact.id)}
             >
-              Delete
-            </button>
+              <DeleteForeverIcon
+                sx={{
+                  fill: `#3b5998`,
+                  '&:hover': {
+                    fill: `red`,
+                  },
+                }}
+              />
+            </IconButton>
           </li>
         );
       })}

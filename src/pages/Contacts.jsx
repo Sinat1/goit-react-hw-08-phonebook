@@ -5,8 +5,10 @@ import ContactList from 'components/ContactList';
 import Filter from 'components/Filter';
 import { selectError, selectIsLoading } from 'redux/contacts/selectors';
 import { fetchContacts } from 'redux/contacts/operations';
-import { Loader } from 'components/Loader/Loader';
-import css from '../components/App/App.module.css';
+import { SmallLoader } from 'components/Loader/SmallLoader';
+// import css from '../components/App/App.module.css';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
 
 const Contacts = () => {
   const dispatch = useDispatch();
@@ -18,16 +20,59 @@ const Contacts = () => {
   }, [dispatch]);
 
   return (
-    <div className={css.app}>
-      <h1 className={css.pageTitle}>Phonebook</h1>
+    <>
+      <Typography
+        variant="h2"
+        sx={{
+          fontSize: `35px`,
+          fontWeight: `700`,
+          color: `#1f1f1f`,
+          paddingTop: `50px`,
+          textAlign: `center`,
+        }}
+      >
+        Add new contact in the form below ⬇️
+      </Typography>
       <ContactForm />
-      <h2>Contacts</h2>
-      {isLoading && !error && <Loader />}
-      <div className={css.wrapper}>
-        <Filter />
-        <ContactList />
-      </div>
-    </div>
+      <Typography
+        variant="h3"
+        sx={{
+          fontSize: `35px`,
+          fontWeight: `700`,
+          color: `#1f1f1f`,
+          paddingTop: `50px`,
+          textAlign: `center`,
+        }}
+      >
+        Contacts
+      </Typography>
+      {isLoading && !error && <SmallLoader />}
+      <Box
+        sx={{
+          display: `flex`,
+          flexDirection: `column`,
+          justifyContent: `center`,
+          alignItems: `center`,
+          paddingTop: `50px`,
+        }}
+      >
+        <Box
+          sx={{
+            display: `flex`,
+            width: `500px`,
+            flexDirection: `column`,
+            justifyContent: `center`,
+            alignItems: `center`,
+            boxShadow: `0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 2px 1px rgba(0, 0, 0, 0.2)`,
+            backgroundColor: `#ffffff`,
+          }}
+        >
+          <Filter />
+          <ContactList />
+        </Box>
+      </Box>
+    </>
   );
 };
 
