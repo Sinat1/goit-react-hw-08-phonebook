@@ -15,9 +15,14 @@ function ifAccountIsMissingNotification() {
   Notiflix.Notify.failure('There is no registered account via this email');
 }
 
+function ifEmailAlreadyUsedNotification() {
+  Notiflix.Notify.failure('This email is already used');
+}
+
 export {
   ifAddingContactSuccessfulNotification,
   ifDeletingContactNotification,
   ifErrorNotification,
   ifAccountIsMissingNotification,
+  ifEmailAlreadyUsedNotification,
 };

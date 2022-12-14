@@ -4,6 +4,7 @@ import { setAuthHeader, clearAuthHeader } from 'api/api';
 import {
   ifAccountIsMissingNotification,
   ifErrorNotification,
+  ifEmailAlreadyUsedNotification,
 } from 'notifications/notifications';
 /*
  * POST @ /users/signup
@@ -18,7 +19,7 @@ export const register = createAsyncThunk(
       setAuthHeader(res.data.token);
       return res.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(ifErrorNotification());
+      return thunkAPI.rejectWithValue(ifEmailAlreadyUsedNotification());
     }
   }
 );
