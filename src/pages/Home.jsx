@@ -4,7 +4,15 @@ import Typography from '@mui/material/Typography';
 
 const Home = () => {
   return (
-    <Box sx={{ maxWidth: `1650px`, paddingTop: `150px` }}>
+    <Box
+      sx={{
+        maxWidth: `1650px`,
+        paddingTop: `150px`,
+        display: `flex`,
+        alignItems: `center`,
+        justifyContent: `center`,
+      }}
+    >
       <Box
         sx={{
           display: `flex`,
@@ -13,8 +21,6 @@ const Home = () => {
           flexDirection: `column`,
           height: `400px`,
           width: `900px`,
-          marginLeft: `25%`,
-          marginRight: `25%`,
           backgroundColor: `#fff`,
           boxShadow: `0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
     0px 2px 1px rgba(0, 0, 0, 0.2)`,
